@@ -378,6 +378,99 @@
     }
     .trust-item svg { color: var(--color-accent); flex-shrink: 0; }
     /* ─────────────────────────────────────────
+       SUPPLIERS STRIP
+    ───────────────────────────────────────── */
+    .suppliers {
+      background: linear-gradient(135deg, #1A1208 0%, #2C1C08 50%, #1A1208 100%);
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      border-top: 1px solid rgba(184,135,12,.25);
+      border-bottom: 1px solid rgba(184,135,12,.25);
+    }
+    .suppliers-inner {
+      padding: 36px 0;
+    }
+    .suppliers::before,
+    .suppliers::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 200px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .suppliers::before {
+      left: 0;
+      background: linear-gradient(to right, #1A1208, transparent);
+    }
+    .suppliers::after {
+      right: 0;
+      background: linear-gradient(to left, #1A1208, transparent);
+    }
+    .suppliers-label {
+      text-align: center;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .suppliers-label::before,
+    .suppliers-label::after {
+      content: '';
+      height: 1px;
+      width: 60px;
+      background: linear-gradient(to right, transparent, var(--color-accent));
+    }
+    .suppliers-label::after {
+      background: linear-gradient(to left, transparent, var(--color-accent));
+    }
+    .suppliers-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 35s linear infinite;
+    }
+    .suppliers-track:hover { animation-play-state: paused; }
+    .suppliers-list {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+    .supplier-item {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.75);
+      padding: 0 36px;
+      transition: color .3s;
+      position: relative;
+    }
+    .supplier-item:hover { color: var(--color-accent-lt); }
+    .supplier-item::after {
+      content: '◆';
+      position: absolute;
+      right: -6px;
+      font-size: .4rem;
+      color: var(--color-accent);
+      font-style: normal;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    /* ─────────────────────────────────────────
        SERVICES
     ───────────────────────────────────────── */
     .services {
@@ -1231,6 +1324,38 @@
       </div>
     </div>
   </section>
+  <!-- ─── SUPPLIERS STRIP ─── -->
+  <div class="suppliers">
+    <div class="suppliers-inner">
+      <div class="suppliers-label">Our Trusted Suppliers</div>
+      <div class="suppliers-track">
+        <div class="suppliers-list">
+          <span class="supplier-item">The Flooring Lab</span>
+          <span class="supplier-item">HTT Flooring</span>
+          <span class="supplier-item">Tudorwoods</span>
+          <span class="supplier-item">Terra Mater</span>
+          <span class="supplier-item">Chaparral Carpets</span>
+          <span class="supplier-item">Armstrong Flooring</span>
+          <span class="supplier-item">Calm Walk</span>
+          <span class="supplier-item">Intafloors</span>
+          <span class="supplier-item">Preference Floors</span>
+          <span class="supplier-item">Access International Distributors</span>
+        </div>
+        <div class="suppliers-list" aria-hidden="true">
+          <span class="supplier-item">The Flooring Lab</span>
+          <span class="supplier-item">HTT Flooring</span>
+          <span class="supplier-item">Tudorwoods</span>
+          <span class="supplier-item">Terra Mater</span>
+          <span class="supplier-item">Chaparral Carpets</span>
+          <span class="supplier-item">Armstrong Flooring</span>
+          <span class="supplier-item">Calm Walk</span>
+          <span class="supplier-item">Intafloors</span>
+          <span class="supplier-item">Preference Floors</span>
+          <span class="supplier-item">Access International Distributors</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- ─── FAQ ─── -->
   <section class="faq" id="faq">
     <div class="container">
