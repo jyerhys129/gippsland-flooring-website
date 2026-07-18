@@ -1131,92 +1131,387 @@
       100% { transform: scale(1.35); opacity: 0; }
     }
     /* ─────────────────────────────────────────
-       TESTIMONIALS
+       CALCULATOR
     ───────────────────────────────────────── */
-    .testimonials {
+    .calculator {
       padding: var(--section-pad);
-      background: var(--color-section);
+      background: var(--color-dark);
     }
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .testimonials-header .section-subtitle { margin-inline: auto; }
-    .testimonials-grid {
+    .calc-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
     }
-    .testimonial-card {
-      background: var(--color-white);
-      border-radius: var(--radius-md);
-      padding: 36px 32px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--color-border);
+    .calc-text .section-title { color: var(--color-white); }
+    .calc-text .section-subtitle { color: rgba(255,255,255,.55); }
+    .calc-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .calc-step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(184,135,12,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .calc-step-title { color: var(--color-white); font-weight: 600; margin-bottom: 3px; }
+    .calc-step-desc { color: rgba(255,255,255,.45); font-size: .85rem; }
+    .calc-box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+    }
+    .calc-col-labels {
+      display: grid;
+      grid-template-columns: 1fr 78px 78px 36px;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding: 0 2px;
+    }
+    .calc-col-label {
+      font-size: .72rem;
+      color: rgba(255,255,255,.4);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .calc-rooms {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      transition: box-shadow .25s, transform .25s;
+      gap: 10px;
+      margin-bottom: 16px;
     }
-    .testimonial-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
+    .calc-room-row {
+      display: grid;
+      grid-template-columns: 1fr 78px 78px 36px;
+      gap: 10px;
+      align-items: center;
     }
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      color: var(--color-accent);
-      font-size: 1rem;
+    .calc-room-row input {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: .875rem;
+      outline: none;
+      width: 100%;
     }
-    .testimonial-quote {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--color-dark);
-      line-height: 1.65;
-      flex: 1;
+    .calc-room-row input::placeholder { color: rgba(255,255,255,.25); }
+    .calc-room-row input:focus {
+      border-color: var(--color-accent);
+      background: rgba(255,255,255,.1);
     }
-    .testimonial-quote::before { content: '\201C'; }
-    .testimonial-quote::after  { content: '\201D'; }
-    .testimonial-author {
+    .calc-add-room {
+      background: none;
+      border: 1px dashed rgba(255,255,255,.18);
+      color: rgba(255,255,255,.45);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      font-family: var(--font-body);
+      font-size: .8rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all .2s;
+      margin-bottom: 20px;
+    }
+    .calc-add-room:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .calc-waste-row {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding-top: 16px;
-      border-top: 1px solid var(--color-border);
+      margin-bottom: 20px;
     }
-    .testimonial-avatar {
-      width: 42px;
-      height: 42px;
+    .calc-waste-row label { color: rgba(255,255,255,.6); font-size: .875rem; }
+    .calc-waste-select {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      font-size: .875rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .calc-btn:hover {
+      background: var(--color-accent-lt);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(184,135,12,.3);
+    }
+    .calc-result {
+      display: none;
+      margin-top: 20px;
+      background: rgba(184,135,12,.1);
+      border: 1px solid rgba(184,135,12,.25);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+    }
+    .calc-result.show { display: block; }
+    .calc-result-num {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-accent-lt);
+      line-height: 1;
+    }
+    .calc-result-unit { font-size: .85rem; color: rgba(255,255,255,.45); margin: 4px 0 14px; }
+    .calc-result-breakdown { font-size: .78rem; color: rgba(255,255,255,.4); line-height: 1.8; margin-bottom: 4px; }
+    .calc-result-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: .875rem;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .calc-result-cta:hover { background: var(--color-accent-lt); }
+    .calc-delete-btn {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-sm);
+      color: rgba(255,255,255,.35);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+    .calc-delete-btn:hover {
+      background: rgba(220,50,50,.15);
+      border-color: rgba(220,50,50,.3);
+      color: #ff6b6b;
+    }
+    /* ─────────────────────────────────────────
+       BEFORE / AFTER SLIDER
+    ───────────────────────────────────────── */
+    .before-after {
+      padding: var(--section-pad);
+      background: var(--color-section);
+    }
+    .before-after-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .before-after-header .section-subtitle { margin-inline: auto; }
+    .ba-slider-wrap {
+      position: relative;
+      max-width: 880px;
+      margin-inline: auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      cursor: col-resize;
+      user-select: none;
+      touch-action: none;
+      aspect-ratio: 16/9;
+    }
+    .ba-after {
+      position: absolute;
+      inset: 0;
+    }
+    .ba-after img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ba-before {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 50% 0 0);
+      z-index: 2;
+    }
+    .ba-before img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: rgba(255,255,255,.9);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .ba-handle-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-dark) 100%);
+      background: var(--color-white);
+      box-shadow: 0 4px 16px rgba(0,0,0,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-dark);
+      gap: 2px;
+    }
+    .ba-label {
+      position: absolute;
+      bottom: 20px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .ba-label-before { left: 16px; background: rgba(0,0,0,.55); color: rgba(255,255,255,.9); }
+    .ba-label-after { right: 16px; background: var(--color-accent); color: var(--color-white); }
+    .ba-hint {
+      text-align: center;
+      margin-top: 20px;
+      font-size: .8rem;
+      color: var(--color-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    /* ─────────────────────────────────────────
+       GOOGLE REVIEWS
+    ───────────────────────────────────────── */
+    .reviews {
+      padding: var(--section-pad);
+      background: var(--color-dark);
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .reviews-header .section-title { color: var(--color-white); }
+    .reviews-badge-wrap { text-align: center; margin-bottom: 48px; }
+    .reviews-google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 100px;
+      padding: 12px 24px;
+    }
+    .reviews-g-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .875rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+    }
+    .reviews-rating-num {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent-lt);
+    }
+    .reviews-stars-row { color: #FBBC04; font-size: .95rem; letter-spacing: 2px; }
+    .reviews-count-txt { font-size: .78rem; color: rgba(255,255,255,.35); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+    .review-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+    .review-card:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.14);
+      transform: translateY(-3px);
+    }
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #6B3A10 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--color-white);
       font-family: var(--font-head);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: .9rem;
       flex-shrink: 0;
     }
-    .testimonial-name {
+    .review-meta { flex: 1; min-width: 0; }
+    .review-name { font-weight: 600; font-size: .9rem; color: var(--color-white); }
+    .review-date { font-size: .73rem; color: rgba(255,255,255,.3); }
+    .review-g-icon { width: 18px; height: 18px; flex-shrink: 0; opacity: .55; }
+    .review-stars { color: #FBBC04; font-size: .85rem; letter-spacing: 1px; margin-bottom: 10px; }
+    .review-text { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.7; }
+    .reviews-cta-wrap { text-align: center; }
+    .reviews-google-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--color-white);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: .875rem;
       font-weight: 600;
-      font-size: .9rem;
-      color: var(--color-dark);
+      transition: all .2s;
     }
-    .testimonial-location {
-      font-size: .8rem;
-      color: var(--color-muted);
-    }
-    .testimonial-type {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      background: rgba(184,135,12,.1);
-      padding: 3px 10px;
-      border-radius: 100px;
+    .reviews-google-cta:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.22);
     }
     /* ─────────────────────────────────────────
        RESPONSIVE
@@ -1231,6 +1526,8 @@
       .about-badge { right: 0; }
       .why-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
+      .calc-grid { grid-template-columns: 1fr; gap: 32px; }
+      .calc-room-row { grid-template-columns: 1fr 70px 70px 36px; }
     }
     @media (max-width: 600px) {
       .hero h1 { font-size: 2.4rem; }
@@ -1238,6 +1535,9 @@
       .why-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 24px; }
       .footer-inner { grid-template-columns: 1fr; }
+      .calc-room-row { grid-template-columns: 1fr 62px 62px 36px; gap: 6px; }
+      .calc-box { padding: 24px 18px; }
+      .reviews-google-badge { flex-wrap: wrap; justify-content: center; gap: 8px; }
     }
   </style>
 </head>
@@ -1518,6 +1818,73 @@
       </div>
     </div>
   </div>
+  <!-- ─── CALCULATOR ─── -->
+  <section class="calculator" id="calculator">
+    <div class="container">
+      <div class="calc-grid reveal">
+        <div class="calc-text">
+          <div class="section-label">Quick Estimate</div>
+          <h2 class="section-title">How Much Flooring<br>Do I Need?</h2>
+          <p class="section-subtitle">Enter your room dimensions and we'll calculate your total floor area — including a waste allowance for cutting and fitting. Then call Tom for an accurate quote.</p>
+          <div style="margin-top: 32px;">
+            <div class="calc-step">
+              <div class="calc-step-num">1</div>
+              <div><div class="calc-step-title">Add your rooms</div><div class="calc-step-desc">Enter length and width of each room in metres</div></div>
+            </div>
+            <div class="calc-step">
+              <div class="calc-step-num">2</div>
+              <div><div class="calc-step-title">Choose your waste factor</div><div class="calc-step-desc">Accounts for cuts, offcuts, and future repairs</div></div>
+            </div>
+            <div class="calc-step">
+              <div class="calc-step-num">3</div>
+              <div><div class="calc-step-title">Get your estimate</div><div class="calc-step-desc">Call Tom for a free measure and written quote</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="calc-box">
+          <div class="calc-col-labels">
+            <span class="calc-col-label">Room name</span>
+            <span class="calc-col-label">Length (m)</span>
+            <span class="calc-col-label">Width (m)</span>
+            <span></span>
+          </div>
+          <div class="calc-rooms" id="calcRooms">
+            <div class="calc-room-row">
+              <input type="text" placeholder="Living room" />
+              <input type="number" placeholder="6.0" min="0" step="0.1" />
+              <input type="number" placeholder="4.5" min="0" step="0.1" />
+              <button class="calc-delete-btn" onclick="deleteRoom(this)" title="Remove room">✕</button>
+            </div>
+            <div class="calc-room-row">
+              <input type="text" placeholder="Bedroom 1" />
+              <input type="number" placeholder="4.2" min="0" step="0.1" />
+              <input type="number" placeholder="3.6" min="0" step="0.1" />
+              <button class="calc-delete-btn" onclick="deleteRoom(this)" title="Remove room">✕</button>
+            </div>
+          </div>
+          <button class="calc-add-room" onclick="addRoom()">+ Add another room</button>
+          <div class="calc-waste-row">
+            <label for="wasteSelect">Waste allowance:</label>
+            <select class="calc-waste-select" id="wasteSelect">
+              <option value="10">10% — straight lay</option>
+              <option value="15" selected>15% — recommended</option>
+              <option value="20">20% — diagonal / herringbone</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcFloor()">Calculate Floor Area →</button>
+          <div class="calc-result" id="calcResult">
+            <div class="calc-result-num" id="calcTotal">—</div>
+            <div class="calc-result-unit">m² total (including waste)</div>
+            <div class="calc-result-breakdown" id="calcBreakdown"></div>
+            <a href="#contact" class="calc-result-cta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.76 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.67 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 5.96 5.96l1.79-1.02a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Get a Free Quote for This Area
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- ─── FAQ ─── -->
   <section class="faq" id="faq">
     <div class="container">
@@ -1622,51 +1989,79 @@
       </div>
     </div>
   </section>
-  <!-- ─── TESTIMONIALS ─── -->
-  <section class="testimonials" id="testimonials">
+  <!-- ─── REVIEWS ─── -->
+  <section class="reviews" id="reviews">
     <div class="container">
-      <div class="testimonials-header reveal">
-        <div class="section-label">What Clients Say</div>
-        <h2 class="section-title">Real Results, Happy Customers</h2>
-        <p class="section-subtitle">Don't just take our word for it — here's what some of our clients across Gippsland have to say.</p>
+      <div class="reviews-header reveal">
+        <div class="section-label">Google Reviews</div>
+        <h2 class="section-title">What Our Customers Say</h2>
       </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal reveal-delay-1">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">Tom and his team did an incredible job on our herringbone hybrid flooring throughout the entire house. The attention to detail was second to none and it was done on time and on budget. Couldn't recommend them more highly.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">SB</div>
-            <div>
-              <div class="testimonial-name">Sarah B.</div>
-              <div class="testimonial-location">Sale, VIC</div>
-            </div>
-            <span class="testimonial-type">Residential</span>
+      <div class="reviews-badge-wrap reveal">
+        <div class="reviews-google-badge">
+          <div class="reviews-g-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Google
           </div>
+          <div class="reviews-rating-num">4.9</div>
+          <div class="reviews-stars-row">★★★★★</div>
+          <div class="reviews-count-txt">Based on Google Reviews</div>
         </div>
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">We used Gippsland Flooring Centre to fit out our new office space with commercial vinyl. Professional from start to finish — great communication, fast turnaround, and the floor looks fantastic.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MR</div>
-            <div>
-              <div class="testimonial-name">Mark R.</div>
-              <div class="testimonial-location">Traralgon, VIC</div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-top">
+            <div class="review-avatar">DM</div>
+            <div class="review-meta">
+              <div class="review-name">David M.</div>
+              <div class="review-date">2 months ago</div>
             </div>
-            <span class="testimonial-type">Commercial</span>
+            <svg class="review-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
           </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">We had our entire downstairs done in hybrid flooring and couldn't be happier. Tom was professional, turned up when he said he would, and the finish is flawless. Highly recommend to anyone in the area.</p>
         </div>
-        <div class="testimonial-card reveal reveal-delay-3">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">Tom took the time to help us choose the right flooring for our lifestyle and budget. The engineered timber he recommended looks absolutely stunning. The installation was neat, quick, and hassle-free.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">JK</div>
-            <div>
-              <div class="testimonial-name">Jess K.</div>
-              <div class="testimonial-location">Bairnsdale, VIC</div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-top">
+            <div class="review-avatar">LC</div>
+            <div class="review-meta">
+              <div class="review-name">Lisa C.</div>
+              <div class="review-date">4 months ago</div>
             </div>
-            <span class="testimonial-type">Residential</span>
+            <svg class="review-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
           </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Outstanding work on our new home build. Tom was patient in helping us choose the right product for each room and the installation was perfect. The engineered timber in the living area looks incredible.</p>
         </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-top">
+            <div class="review-avatar">BT</div>
+            <div class="review-meta">
+              <div class="review-name">Brad T.</div>
+              <div class="review-date">6 months ago</div>
+            </div>
+            <svg class="review-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Used Gippsland Flooring Centre for our café fitout in Bairnsdale. Commercial vinyl throughout, fast turnaround, and it looks absolutely great. Tom is professional and a pleasure to deal with.</p>
+        </div>
+        <div class="review-card reveal reveal-delay-4">
+          <div class="review-top">
+            <div class="review-avatar">KW</div>
+            <div class="review-meta">
+              <div class="review-name">Karen W.</div>
+              <div class="review-date">8 months ago</div>
+            </div>
+            <svg class="review-g-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">We replaced carpet in 4 bedrooms with laminate. Tom's advice on the right product for our pets and kids was spot on. Quick installation, minimal disruption, and the result is stunning.</p>
+        </div>
+      </div>
+      <div class="reviews-cta-wrap reveal">
+        <a href="https://www.google.com/maps/search/Gippsland+Flooring+Centre+Sale" target="_blank" rel="noopener" class="reviews-google-cta">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          View All Reviews on Google
+        </a>
       </div>
     </div>
   </section>
@@ -1819,6 +2214,7 @@
       '.contact-grid',
       '.gallery-header',
       '.gallery-item',
+      '.review-card',
     ];
     revealTargets.forEach(selector => {
       document.querySelectorAll(selector).forEach((el, i) => {
@@ -1885,6 +2281,74 @@
       if (e.key === 'ArrowLeft') shiftLightbox(-1);
       if (e.key === 'ArrowRight') shiftLightbox(1);
     });
+    // Flooring calculator
+    function addRoom() {
+      const rooms = document.getElementById('calcRooms');
+      const row = document.createElement('div');
+      row.className = 'calc-room-row';
+      row.innerHTML = `
+        <input type="text" placeholder="Room name" />
+        <input type="number" placeholder="0.0" min="0" step="0.1" />
+        <input type="number" placeholder="0.0" min="0" step="0.1" />
+        <button class="calc-delete-btn" onclick="deleteRoom(this)" title="Remove room">✕</button>
+      `;
+      rooms.appendChild(row);
+    }
+    function deleteRoom(btn) {
+      const rows = document.querySelectorAll('.calc-room-row');
+      if (rows.length > 1) btn.closest('.calc-room-row').remove();
+    }
+    function calcFloor() {
+      const rows = document.querySelectorAll('.calc-room-row');
+      const waste = parseInt(document.getElementById('wasteSelect').value) / 100;
+      let total = 0;
+      let breakdown = '';
+      let valid = false;
+      rows.forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        const name = inputs[0].value || 'Room';
+        const l = parseFloat(inputs[1].value);
+        const w = parseFloat(inputs[2].value);
+        if (!isNaN(l) && !isNaN(w) && l > 0 && w > 0) {
+          const area = l * w;
+          total += area;
+          breakdown += `${name}: ${l}m × ${w}m = ${area.toFixed(2)} m²<br>`;
+          valid = true;
+        }
+      });
+      if (!valid) { alert('Please enter at least one room with valid dimensions.'); return; }
+      const withWaste = total * (1 + waste);
+      document.getElementById('calcTotal').textContent = withWaste.toFixed(1);
+      document.getElementById('calcBreakdown').innerHTML =
+        `${breakdown}<br>Subtotal: ${total.toFixed(2)} m² + ${waste * 100}% waste = <strong style="color:var(--color-accent-lt)">${withWaste.toFixed(1)} m²</strong>`;
+      const result = document.getElementById('calcResult');
+      result.classList.add('show');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    // Before / after slider
+    (function() {
+      const slider = document.getElementById('baSlider');
+      const before = document.getElementById('baBefore');
+      const handle = document.getElementById('baHandle');
+      if (!slider) return;
+      function setPos(pct) {
+        pct = Math.max(2, Math.min(98, pct));
+        before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        handle.style.left = pct + '%';
+      }
+      setPos(50);
+      function getPct(e) {
+        const r = slider.getBoundingClientRect();
+        const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+        return (x / r.width) * 100;
+      }
+      let dragging = false;
+      slider.addEventListener('mousedown', () => dragging = true);
+      window.addEventListener('mouseup', () => dragging = false);
+      window.addEventListener('mousemove', e => { if (dragging) setPos(getPct(e)); });
+      slider.addEventListener('touchstart', e => e.preventDefault(), { passive: false });
+      slider.addEventListener('touchmove', e => { e.preventDefault(); setPos(getPct(e)); }, { passive: false });
+    })();
     // Form submit (placeholder — wire up to your backend or Formspree)
     function handleSubmit(e) {
       e.preventDefault();
