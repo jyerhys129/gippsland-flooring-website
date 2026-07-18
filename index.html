@@ -1063,6 +1063,162 @@
       color: var(--color-accent);
     }
     /* ─────────────────────────────────────────
+       SCROLL ANIMATIONS
+    ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+    .reveal-delay-6 { transition-delay: .6s; }
+    /* ─────────────────────────────────────────
+       STICKY CALL BUTTON
+    ───────────────────────────────────────── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: 14px 22px;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: .875rem;
+      font-weight: 700;
+      box-shadow: 0 8px 32px rgba(184,135,12,.45);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .3s ease, transform .3s ease, background .2s, box-shadow .2s;
+      pointer-events: none;
+    }
+    .sticky-cta.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .sticky-cta:hover {
+      background: var(--color-accent-lt);
+      box-shadow: 0 12px 40px rgba(184,135,12,.6);
+      transform: translateY(-2px);
+    }
+    .sticky-cta svg { flex-shrink: 0; }
+    .sticky-cta-pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 100px;
+      background: var(--color-accent);
+      animation: pulse-ring 2.5s ease-out infinite;
+      z-index: -1;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: .6; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    /* ─────────────────────────────────────────
+       TESTIMONIALS
+    ───────────────────────────────────────── */
+    .testimonials {
+      padding: var(--section-pad);
+      background: var(--color-section);
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .testimonials-header .section-subtitle { margin-inline: auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      color: var(--color-accent);
+      font-size: 1rem;
+    }
+    .testimonial-quote {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--color-dark);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .testimonial-quote::before { content: '\201C'; }
+    .testimonial-quote::after  { content: '\201D'; }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+    }
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--color-dark);
+    }
+    .testimonial-location {
+      font-size: .8rem;
+      color: var(--color-muted);
+    }
+    .testimonial-type {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(184,135,12,.1);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    /* ─────────────────────────────────────────
        RESPONSIVE
     ───────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -1086,6 +1242,12 @@
   </style>
 </head>
 <body>
+  <!-- ─── STICKY CALL BUTTON ─── -->
+  <a href="tel:0497200849" class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-pulse"></div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.76 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.67 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 5.96 5.96l1.79-1.02a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call Tom Now
+  </a>
   <!-- ─── MOBILE MENU ─── -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
@@ -1181,7 +1343,7 @@
   <!-- ─── SERVICES ─── -->
   <section class="services" id="services">
     <div class="container">
-      <div class="services-header">
+      <div class="services-header reveal">
         <div class="section-label">What We Offer</div>
         <h2 class="section-title">Our Flooring Range</h2>
         <p class="section-subtitle">From classic hardwood to modern hybrid options, we supply and install flooring that suits your style and budget.</p>
@@ -1460,6 +1622,54 @@
       </div>
     </div>
   </section>
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label">What Clients Say</div>
+        <h2 class="section-title">Real Results, Happy Customers</h2>
+        <p class="section-subtitle">Don't just take our word for it — here's what some of our clients across Gippsland have to say.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">Tom and his team did an incredible job on our herringbone hybrid flooring throughout the entire house. The attention to detail was second to none and it was done on time and on budget. Couldn't recommend them more highly.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SB</div>
+            <div>
+              <div class="testimonial-name">Sarah B.</div>
+              <div class="testimonial-location">Sale, VIC</div>
+            </div>
+            <span class="testimonial-type">Residential</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">We used Gippsland Flooring Centre to fit out our new office space with commercial vinyl. Professional from start to finish — great communication, fast turnaround, and the floor looks fantastic.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div>
+              <div class="testimonial-name">Mark R.</div>
+              <div class="testimonial-location">Traralgon, VIC</div>
+            </div>
+            <span class="testimonial-type">Commercial</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">Tom took the time to help us choose the right flooring for our lifestyle and budget. The engineered timber he recommended looks absolutely stunning. The installation was neat, quick, and hassle-free.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JK</div>
+            <div>
+              <div class="testimonial-name">Jess K.</div>
+              <div class="testimonial-location">Bairnsdale, VIC</div>
+            </div>
+            <span class="testimonial-type">Residential</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- ─── CONTACT ─── -->
   <section class="contact" id="contact">
     <div class="container">
@@ -1595,6 +1805,36 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     });
+    // Sticky call button
+    const stickyCta = document.getElementById('stickyCta');
+    window.addEventListener('scroll', () => {
+      stickyCta.classList.toggle('visible', window.scrollY > 500);
+    });
+    // Scroll reveal
+    const revealTargets = [
+      '.service-card',
+      '.why-card',
+      '.about-grid',
+      '.faq-inner',
+      '.contact-grid',
+      '.gallery-header',
+      '.gallery-item',
+    ];
+    revealTargets.forEach(selector => {
+      document.querySelectorAll(selector).forEach((el, i) => {
+        el.classList.add('reveal');
+        if (i > 0) el.style.transitionDelay = `${Math.min(i * 0.1, 0.5)}s`;
+      });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     // Mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
