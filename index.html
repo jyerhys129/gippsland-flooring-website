@@ -13,6 +13,7 @@
   <meta name="geo.position" content="-38.1104;147.0681" />
   <meta name="ICBM" content="-38.1104, 147.0681" />
   <link rel="canonical" href="https://jyerhys129.github.io/gippsland-flooring-website/" />
+  <link rel="sitemap" type="application/xml" href="sitemap.xml" />
   <link rel="icon" href="images/logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="images/logo.png" />
   <meta name="theme-color" content="#1A1208" />
@@ -61,6 +62,8 @@
           "https://jyerhys129.github.io/gippsland-flooring-website/images/IMG_3645.jpg"
         ],
         "description": "Gippsland Flooring Centre is a locally owned flooring specialist based in Sale, Victoria. Tom and his team supply and install hybrid, laminate, engineered timber, parquetry, carpet and commercial vinyl for residential and commercial projects across the Gippsland region. Free measure and quote. 15+ years experience.",
+        "slogan": "Beautiful Floors, Expert Hands",
+        "knowsAbout": ["Hybrid flooring", "Laminate flooring", "Engineered timber flooring", "Parquetry", "Carpet installation", "Commercial vinyl flooring", "Flooring installation Gippsland"],
         "telephone": "+61-497-200-849",
         "email": "gippslandflooringcentre@outlook.com",
         "founder": { "@type": "Person", "name": "Tom" },
@@ -93,6 +96,32 @@
           "worstRating": "1",
           "ratingCount": "4"
         },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "David M." },
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "We had our entire downstairs done in hybrid flooring and couldn't be happier. Tom was professional, turned up when he said he would, and the finish is flawless. Highly recommend to anyone in the area."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Lisa C." },
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "Outstanding work on our new home build. Tom was patient in helping us choose the right product for each room and the installation was perfect. The engineered timber in the living area looks incredible."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Brad T." },
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "Used Gippsland Flooring Centre for our café fitout in Bairnsdale. Commercial vinyl throughout, fast turnaround, and it looks absolutely great. Tom is professional and a pleasure to deal with."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Karen W." },
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "We replaced carpet in 4 bedrooms with laminate. Tom's advice on the right product for our pets and kids was spot on. Quick installation, minimal disruption, and the result is stunning."
+          }
+        ],
         "sameAs": [
           "https://www.google.com/maps/search/Gippsland+Flooring+Centre+Sale"
         ],
@@ -160,8 +189,30 @@
               "@type": "Answer",
               "text": "We supply and install hybrid flooring, laminate, engineered timber, parquetry, carpet, and commercial vinyl. We handle full supply-and-install projects including subfloor preparation across the Gippsland region."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does flooring installation cost in Gippsland?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Flooring costs depend on the product, room size, subfloor condition and installation complexity. Gippsland Flooring Centre provides a free on-site measure and written quote with no obligation — call 0497 200 849 or request a quote online."
+            }
           }
         ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://jyerhys129.github.io/gippsland-flooring-website/#webpage",
+        "url": "https://jyerhys129.github.io/gippsland-flooring-website/",
+        "name": "Flooring Installation Sale VIC | Gippsland Flooring Centre",
+        "description": "Premium timber and hybrid flooring supply and installation across Gippsland, Victoria. Free measure and quote.",
+        "isPartOf": { "@id": "https://jyerhys129.github.io/gippsland-flooring-website/#website" },
+        "about": { "@id": "https://jyerhys129.github.io/gippsland-flooring-website/#business" },
+        "inLanguage": "en-AU",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-desc", ".about-body", ".faq-answer", ".service-area-desc"]
+        }
       }
     ]
   }
@@ -1695,6 +1746,44 @@
       border-color: rgba(255,255,255,.22);
     }
     /* ─────────────────────────────────────────
+       SERVICE AREA
+    ───────────────────────────────────────── */
+    .service-area {
+      padding: clamp(48px, 6vw, 72px) clamp(20px, 5vw, 40px);
+      background: var(--color-section);
+      border-top: 1px solid var(--color-border);
+    }
+    .service-area-inner {
+      text-align: center;
+      max-width: 820px;
+      margin-inline: auto;
+    }
+    .service-area-inner .section-subtitle { margin-inline: auto; }
+    .service-area-desc {
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-inline: auto;
+    }
+    .service-area-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 0;
+    }
+    .service-area-list li {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+    /* ─────────────────────────────────────────
        RESPONSIVE
     ───────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -1736,6 +1825,7 @@
     <a href="#services" onclick="closeMobile()">Services</a>
     <a href="#about" onclick="closeMobile()">About</a>
     <a href="#gallery" onclick="closeMobile()">Gallery</a>
+    <a href="#reviews" onclick="closeMobile()">Reviews</a>
     <a href="#faq" onclick="closeMobile()">FAQ</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
     <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Get a Quote</a>
@@ -1754,6 +1844,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1892,7 +1983,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image-wrap">
-          <img src="images/IMG_3645.jpg" alt="Gippsland Flooring Centre - installation work" class="about-image" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);" />
+          <img src="images/IMG_3645.jpg" alt="Tom from Gippsland Flooring Centre installing hardwood timber flooring in a Sale, Victoria home" class="about-image" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);" />
           <div class="about-badge">
             <div class="about-badge-num">15+</div>
             <div class="about-badge-text">Years of expertise</div>
@@ -2138,6 +2229,17 @@
           </div>
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              How much does flooring installation cost in Gippsland?
+              <span class="faq-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              Costs depend on the flooring type, room size, subfloor condition and installation complexity. We provide a free on-site measure and written quote with no obligation — call <a href="tel:0497200849">0497 200 849</a> or use the contact form to book.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
               Who is the best flooring installer in Sale, Victoria?
               <span class="faq-icon">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
@@ -2273,6 +2375,27 @@
       </div>
     </div>
   </section>
+  <!-- ─── SERVICE AREA ─── -->
+  <section class="service-area" id="areas" aria-labelledby="areas-title">
+    <div class="container service-area-inner">
+      <div class="section-label">Where We Work</div>
+      <h2 class="section-title" id="areas-title">Flooring Installation Across Gippsland</h2>
+      <p class="service-area-desc">From our base at 328 York St, Sale, Gippsland Flooring Centre supplies and installs hybrid, laminate, engineered timber, parquetry, carpet and commercial vinyl for homes, renovations, new builds and commercial fitouts across Victoria's Gippsland region.</p>
+      <ul class="service-area-list">
+        <li>Sale</li>
+        <li>Bairnsdale</li>
+        <li>Traralgon</li>
+        <li>Morwell</li>
+        <li>Leongatha</li>
+        <li>Warragul</li>
+        <li>Maffra</li>
+        <li>Latrobe Valley</li>
+        <li>East Gippsland</li>
+        <li>South Gippsland</li>
+        <li>Wellington Shire</li>
+      </ul>
+    </div>
+  </section>
   <!-- ─── CONTACT ─── -->
   <section class="contact" id="contact">
     <div class="container">
@@ -2387,6 +2510,7 @@
             <li><a href="tel:0497200849">0497 200 849</a></li>
             <li><a href="mailto:gippslandflooringcentre@outlook.com">Email Us</a></li>
             <li><a href="#contact">Get a Quote</a></li>
+            <li><a href="#areas">Service Areas</a></li>
             <li style="color:rgba(255,255,255,.35); font-size:.875rem; margin-top:8px;">328 York St, Sale VIC 3850</li>
           </ul>
         </div>

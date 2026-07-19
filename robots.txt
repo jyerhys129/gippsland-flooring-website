@@ -20,3 +20,6 @@ User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://jyerhys129.github.io/gippsland-flooring-website/sitemap.xml
+
+# AI-readable business summary
+# https://jyerhys129.github.io/gippsland-flooring-website/llms.txt
